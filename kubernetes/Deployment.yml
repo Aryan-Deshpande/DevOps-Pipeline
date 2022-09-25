@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: backd
+
+spec:
+  replicas: 1
+  
+  selector:
+    matchLabels:
+      app: backd
+  
+  template:
+    
+    metadata:
+      labels:
+        app: backd
+    
+    spec:
+      containers:
+      - name: backd
+        image: node
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        imagePullPolicy: Never
+        resources:
+          limits:
+            cpu: 0.2m
+            memory: 128Mi
+
+  
